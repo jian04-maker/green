@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>그린컵 민트 텀블러 사전예약</title>
+<style>
+  :root {
+    --mint: #7FC8B9;
+    --mint-dark: #4FA893;
+    --mint-pale: #EAF6F2;
+    --mint-paler: #F6FBF9;
+    --ink: #2B3A39;
+    --ink-soft: #5B6A68;
+    --white: #FFFFFF;
+    --line: #DCEEE8;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 96px 0; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    padding: 0;
+    background: var(--mint-paler);
+  }
+  .hero-img {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-caption {
+    text-align: center;
+    padding: 56px 24px 72px;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    color: var(--mint-dark);
+    font-weight: 600;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+  .hero-caption h1 {
+    font-size: 34px;
+    font-weight: 600;
+    margin: 0 0 16px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .hero-caption p {
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin: 0 0 32px;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--mint-dark);
+    color: var(--white);
+    padding: 15px 40px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 0.2s ease;
+  }
+  .cta-btn:hover { background: var(--ink); }
+
+  /* ---------- Section heading ---------- */
+  .section-head {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .section-head .tag {
+    font-size: 13px;
+    color: var(--mint-dark);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .section-head h2 {
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: var(--ink);
+  }
+  .section-head p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* ---------- Product intro ---------- */
+  .product { background: var(--white); }
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 32px;
+  }
+  .feature-card {
+    background: var(--mint-paler);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  .feature-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+  .feature-card .ftext {
+    padding: 24px 26px 28px;
+  }
+  .feature-card .fnum {
+    font-size: 12px;
+    color: var(--mint-dark);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .feature-card h3 {
+    font-size: 18px;
+    margin: 0 0 8px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .feature-card p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .spec-row {
+    margin-top: 48px;
+    display: flex;
+    justify-content: center;
+    gap: 44px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--line);
+    padding-top: 36px;
+  }
+  .spec-item { text-align: center; }
+  .spec-item .v {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--mint-dark);
+    margin-bottom: 4px;
+  }
+  .spec-item .k {
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Data section ---------- */
+  .data-section {
+    background: var(--mint-pale);
+  }
+  .chart-box {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 40px 44px;
+    border: 1px solid var(--line);
+  }
+  .chart-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 56px;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+  .chart-row:last-child { margin-bottom: 0; }
+  .chart-label {
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 500;
+    text-align: right;
+  }
+  .chart-row.highlight .chart-label {
+    font-weight: 700;
+    color: var(--mint-dark);
+  }
+  .bar-track {
+    background: var(--mint-paler);
+    border-radius: 8px;
+    height: 20px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 8px;
+    background: var(--mint);
+  }
+  .chart-row.highlight .bar-fill { background: var(--mint-dark); }
+  .chart-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .chart-row.highlight .chart-value { color: var(--mint-dark); }
+  .chart-footnote {
+    margin-top: 28px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+  .data-message {
+    text-align: center;
+    max-width: 560px;
+    margin: 36px auto 0;
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+  .data-message strong { color: var(--ink); }
+
+  /* ---------- Reviews ---------- */
+  .reviews { background: var(--white); }
+  .review-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .review-card {
+    background: var(--mint-paler);
+    border-radius: 16px;
+    padding: 28px 30px;
+    border: 1px solid var(--line);
+  }
+  .stars {
+    color: var(--mint-dark);
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+  .review-card p.quote {
+    font-size: 15px;
+    color: var(--ink);
+    margin: 0 0 16px;
+  }
+  .review-card .who {
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Reservation form ---------- */
+  .reserve {
+    background: var(--mint-dark);
+    color: var(--white);
+  }
+  .reserve .section-head .tag { color: var(--mint-pale); }
+  .reserve .section-head h2 { color: var(--white); }
+  .reserve .section-head p { color: rgba(255,255,255,0.8); }
+  .reserve-box {
+    max-width: 440px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 18px;
+    padding: 36px;
+  }
+  .reserve-box .perk {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 18px;
+    margin-bottom: 22px;
+  }
+  .reserve-box .perk span strong {
+    display: block;
+    color: var(--mint-dark);
+    font-size: 15px;
+    margin-top: 2px;
+  }
+  .field { margin-bottom: 16px; }
+  .field label {
+    display: block;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .field input {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--mint-paler);
+    outline: none;
+  }
+  .field input:focus { border-color: var(--mint-dark); background: var(--white); }
+  .submit-btn {
+    width: 100%;
+    margin-top: 8px;
+    background: var(--mint-dark);
+    color: var(--white);
+    border: none;
+    padding: 15px 0;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .submit-btn:hover { background: var(--ink); }
+  .reserve-note {
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.75);
+    margin-top: 18px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.65);
+    padding: 40px 0;
+    text-align: center;
+    font-size: 12.5px;
+  }
+  footer .logo-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  footer img { height: 22px; opacity: 0.9; filter: brightness(0) invert(1); }
+  footer p { margin: 4px 0; }
+
+  @media (max-width: 720px) {
+    section { padding: 64px 0; }
+    .hero-img { height: 360px; }
+    .hero-caption h1 { font-size: 26px; }
+    .feature-grid, .review-grid { grid-template-columns: 1fr; }
+    .spec-row { gap: 28px; }
+    .chart-row { grid-template-columns: 92px 1fr 46px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- 상단 배너 -->
+  <div class="hero">
+    <img class="hero-img" src="../images/top-banner.png" alt="그린컵 민트 스테인리스 텀블러 배너">
+    <div class="hero-caption wrap">
+      <span class="eyebrow">GREEN CUP · NEW COLOR</span>
+      <h1>기다리셨던 그 색, 민트 스테인리스</h1>
+      <p>색상 때문에 포기했던 텀블러, 이제 민트로 완성하세요.</p>
+      <a class="cta-btn" href="#reserve">사전예약 신청하기</a>
+    </div>
+  </div>
+
+  <!-- 제품 소개 -->
+  <section class="product">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">Product</span>
+        <h2>그린컵, 민트로 완성되다</h2>
+        <p>350ml 스테인리스 텀블러에 담은 네 가지 디테일</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <img src="../images/warmth.png" alt="보온성 이미지">
+          <div class="ftext">
+            <span class="fnum">WARMTH</span>
+            <h3>오래 지속되는 보온·보냉력</h3>
+            <p>그린컵 기존 라인업에서 가장 많은 만족을 받은 보온 성능을 그대로 이어받았습니다.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <img src="../images/cleaning.png" alt="세척 편의성 이미지">
+          <div class="ftext">
+            <span class="fnum">CARE</span>
+            <h3>간단하게, 깔끔하게 세척</h3>
+            <p>넓은 입구와 단순한 구조로 매일의 세척 부담을 줄였습니다.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <img src="../images/eco-material.png" alt="친환경 소재 안내 이미지">
+          <div class="ftext">
+            <span class="fnum">MATERIAL</span>
+            <h3>오래 쓸 수 있는 스테인리스</h3>
+            <p>일회용 컵과 플라스틱을 대체할 수 있도록, 파손 걱정 없는 소재를 선택했습니다.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <img src="../images/purchase-guide.png" alt="구매 안내 이미지">
+          <div class="ftext">
+            <span class="fnum">GUIDE</span>
+            <h3>지금, 민트로 예약하기</h3>
+            <p>가장 많이 요청받았던 색상 옵션. 한정 수량으로 먼저 만나보실 수 있습니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-item"><div class="v">350ml</div><div class="k">용량</div></div>
+        <div class="spec-item"><div class="v">스테인리스</div><div class="k">소재</div></div>
+        <div class="spec-item"><div class="v">민트</div><div class="k">컬러</div></div>
+        <div class="spec-item"><div class="v">친환경</div><div class="k">컨셉</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 데이터로 보는 이유 -->
+  <section class="data-section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">Why Mint</span>
+        <h2>데이터로 보는, 민트가 필요한 이유</h2>
+        <p>그린컵 환불 데이터에서 가장 많이 나온 사유는 '색상 불만'이었습니다</p>
+      </div>
+
+      <div class="chart-box">
+        <div class="chart-row highlight">
+          <div class="chart-label">색상 불만</div>
+          <div class="bar-track"><div class="bar-fill" style="width:84%;"></div></div>
+          <div class="chart-value">42건</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">보온력 부족</div>
+          <div class="bar-track"><div class="bar-fill" style="width:30%;"></div></div>
+          <div class="chart-value">15건</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">파손·누수</div>
+          <div class="bar-track"><div class="bar-fill" style="width:24%;"></div></div>
+          <div class="chart-value">12건</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">세척 불편</div>
+          <div class="bar-track"><div class="bar-fill" style="width:16%;"></div></div>
+          <div class="chart-value">8건</div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">기타</div>
+          <div class="bar-track"><div class="bar-fill" style="width:10%;"></div></div>
+          <div class="chart-value">5건</div>
+        </div>
+        <p class="chart-footnote">예시 데이터 · 그린컵 환불 접수 사유 기준</p>
+      </div>
+
+      <p class="data-message">가장 많은 아쉬움은 품질이 아니라 <strong>원하는 색이 없다는 것</strong>이었습니다.<br>이번 민트 컬러는 그 공백을 메우기 위한 첫 번째 답입니다.</p>
+    </div>
+  </section>
+
+  <!-- 고객 후기 -->
+  <section class="reviews">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">Reviews</span>
+        <h2>먼저 써본 분들의 이야기</h2>
+        <p>같은 브랜드, 검증된 품질에 대한 솔직한 후기</p>
+      </div>
+
+      <div class="review-grid">
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"보온력이 정말 오래가요. 아침에 담은 커피가 오후까지 따뜻했습니다."</p>
+          <div class="who">— 그린컵 기존 라인업 구매자</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"디자인이 단정해서 사무실에서 쓰기에 부담이 없어요."</p>
+          <div class="who">— 그린컵 기존 라인업 구매자</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★☆</div>
+          <p class="quote">"색상만 더 다양했으면 바로 하나 더 샀을 것 같아요."</p>
+          <div class="who">— 그린컵 기존 라인업 구매자</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"세척이 간단해서 매일 쓰는 데 부담이 없습니다. 재구매 의사 있어요."</p>
+          <div class="who">— 그린컵 기존 라인업 구매자</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 사전예약 폼 -->
+  <section class="reserve" id="reserve">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">Pre-order</span>
+        <h2>민트 텀블러, 가장 먼저 만나보세요</h2>
+        <p>얼리버드 혜택은 한정 수량으로 제공됩니다</p>
+      </div>
+
+      <div class="reserve-box">
+        <div class="perk">
+          <span>얼리버드 혜택<strong>정가 대비 할인 제공</strong></span>
+          <span>한정 수량<strong>조기 마감 가능</strong></span>
+        </div>
+        <form onsubmit="event.preventDefault(); this.querySelector('.submit-btn').textContent='신청이 접수되었습니다';">
+          <div class="field">
+            <label for="name">이름</label>
+            <input id="name" type="text" placeholder="이름을 입력해 주세요" required>
+          </div>
+          <div class="field">
+            <label for="email">이메일</label>
+            <input id="email" type="email" placeholder="example@email.com" required>
+          </div>
+          <button type="submit" class="submit-btn">사전예약 신청하기</button>
+        </form>
+      </div>
+      <p class="reserve-note">제출하신 정보는 사전예약 안내 목적으로만 사용됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 하단 -->
+  <footer>
+    <div class="wrap">
+      <div class="logo-row"><img src="../images/logo.webp" alt="그린컵 로고"></div>
+      <p>GREEN CUP · 친환경 스테인리스 텀블러</p>
+      <p>&copy; 2026 Green Cup. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
